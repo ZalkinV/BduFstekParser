@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,20 +22,25 @@ namespace BduFstekParser
 	public partial class MainWindow : Window
 	{
 		internal List<ThreatEntry> threatEntries { get; set; }
+		private string threatFileName = "thrlist.xlsx";
 
 		public MainWindow()
 		{
 			InitializeComponent();
-			threatEntries = new List<ThreatEntry>();
-			threatEntries.Add(new ThreatEntry() { Id = 0, Name="Угроза 1"});
-			threatEntries.Add(new ThreatEntry() { Id = 1, Name = "Угроза 2" });
 
 			listViewThreatEntries.ItemsSource = threatEntries;
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-
+			if (File.Exists(threatFileName))
+			{
+				MessageBox.Show("Файл с УБИ найден!");
+			}
+			else
+			{
+				MessageBox.Show("Файл с УБИ не найден.");
+			}
 		}
 	}
 }

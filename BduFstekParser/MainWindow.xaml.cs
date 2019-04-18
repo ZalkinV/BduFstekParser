@@ -33,13 +33,13 @@ namespace BduFstekParser
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			if (File.Exists(threatFileName))
+			if (!File.Exists(threatFileName))
 			{
-				MessageBox.Show("Файл с УБИ найден!");
-			}
-			else
-			{
-				MessageBox.Show("Файл с УБИ не найден.");
+				MessageBoxResult userChoice = MessageBox.Show("Файл с УБИ не найден.\nСкачать его с сайта ФСТЭК?", "Проверка наличия файла", MessageBoxButton.YesNo);
+				if (userChoice == MessageBoxResult.Yes)
+				{
+					MessageBox.Show("Будет сделано!");
+				}
 			}
 		}
 	}

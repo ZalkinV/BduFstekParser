@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net;
 
 namespace BduFstekParser
 {
@@ -22,13 +23,16 @@ namespace BduFstekParser
 	public partial class MainWindow : Window
 	{
 		internal List<ThreatEntry> threatEntries { get; set; }
-		private string threatFileName = "thrlist.xlsx";
+		private string threatFileName;
+		private string threatFileUrl;
 
 		public MainWindow()
 		{
 			InitializeComponent();
 
 			listViewThreatEntries.ItemsSource = threatEntries;
+			threatFileName = "thrlist.xlsx";
+			threatFileUrl = "https://bdu.fstec.ru/documents/files/thrlist.xlsx";
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -38,9 +42,13 @@ namespace BduFstekParser
 				MessageBoxResult userChoice = MessageBox.Show("Файл с УБИ не найден.\nСкачать его с сайта ФСТЭК?", "Проверка наличия файла", MessageBoxButton.YesNo);
 				if (userChoice == MessageBoxResult.Yes)
 				{
-					MessageBox.Show("Будет сделано!");
+					using (WebClient webClient = new WebClient())
+					{
+						webClient.DownloadFile(new Uri(threatFileUrl), threatFileName);
+					}
 				}
 			}
 		}
+
 	}
 }

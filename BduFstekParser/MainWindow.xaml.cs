@@ -37,6 +37,11 @@ namespace BduFstekParser
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
+			PrepareFile();
+		}
+
+		private void PrepareFile()
+		{
 			if (!File.Exists(threatFileName))
 			{
 				MessageBoxResult userChoice = MessageBox.Show("Файл с УБИ не найден.\nСкачать его с сайта ФСТЭК?", "Проверка наличия файла", MessageBoxButton.YesNo);

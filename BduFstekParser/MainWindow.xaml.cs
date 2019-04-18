@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
+using System.Threading;
 
 namespace BduFstekParser
 {
@@ -37,7 +38,8 @@ namespace BduFstekParser
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			PrepareFile();
+			Thread filePreparing = new Thread(PrepareFile);
+			filePreparing.Start();
 		}
 
 		private void PrepareFile()

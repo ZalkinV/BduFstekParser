@@ -20,9 +20,16 @@ namespace BduFstekParser
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		internal List<ThreatEntry> threatEntries { get; set; }
+
 		public MainWindow()
 		{
 			InitializeComponent();
+			threatEntries = new List<ThreatEntry>();
+			threatEntries.Add(new ThreatEntry() { Id = 0, Name="Угроза 1"});
+			threatEntries.Add(new ThreatEntry() { Id = 1, Name = "Угроза 2" });
+
+			listViewThreatEntries.ItemsSource = threatEntries;
 		}
 	}
 }

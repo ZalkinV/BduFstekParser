@@ -10,7 +10,8 @@
         <ListView Name="listViewThreatEntries" HorizontalAlignment="Left" Height="300" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">Идентификатор угрозы</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Наименование угрозы</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

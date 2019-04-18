@@ -38,8 +38,14 @@ namespace BduFstekParser
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			Thread filePreparing = new Thread(PrepareFile);
-			filePreparing.Start();
+			Thread fillingListView = new Thread(FillThreatsListView);
+			fillingListView.Start();
+			fillingListView.Join();
+		}
+
+		private void FillThreatsListView()
+		{
+			PrepareFile();
 		}
 
 		private void PrepareFile()

@@ -103,5 +103,15 @@ namespace BduFstekParser
 
 			excel.Quit();
 		}
+
+		private void ButtonPrevious_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void ButtonNext_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

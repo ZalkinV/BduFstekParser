@@ -15,8 +15,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="buttonNext" Content="Далее" HorizontalAlignment="Left" Margin="405,315,0,0" VerticalAlignment="Top" Width="70"/>
-        <Button Name="buttonPrevious" Content="Назад" HorizontalAlignment="Left" Margin="325,315,0,0" VerticalAlignment="Top" Width="70"/>
+        <Button Name="buttonNext" Content="Далее" HorizontalAlignment="Left" Margin="405,315,0,0" VerticalAlignment="Top" Width="70" Click="ButtonNext_Click"/>
+        <Button Name="buttonPrevious" Content="Назад" HorizontalAlignment="Left" Margin="325,315,0,0" VerticalAlignment="Top" Width="70" Click="ButtonPrevious_Click"/>
 
     </Grid>
 </Window>

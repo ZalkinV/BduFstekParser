@@ -41,9 +41,7 @@ namespace BduFstekParser
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			Thread fillingListView = new Thread(FillThreatsListView);
-			fillingListView.Start();
-			fillingListView.Join();
+			FillThreatsListView();
 		}
 
 		private void FillThreatsListView()

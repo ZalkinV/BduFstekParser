@@ -22,6 +22,8 @@ namespace BduFstekParser
 		public DiffWindow(List<EntryDiff> differences)
 		{
 			InitializeComponent();
+
+			listViewDiff.ItemsSource = differences;
 		}
 	}
 }

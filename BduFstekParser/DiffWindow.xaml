@@ -10,8 +10,8 @@
         <ListView Name="listViewDiff" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10,10,10" VerticalAlignment="Stretch" Width="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn>Было</GridViewColumn>
-                    <GridViewColumn>Стало</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Before}">Было</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=After}">Стало</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

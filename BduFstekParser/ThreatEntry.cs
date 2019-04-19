@@ -42,6 +42,11 @@ namespace BduFstekParser
 					$" - Нарушение доступности: {(IsAvailability ? "есть" : "отсутствует")}";
 		}
 
+		public override string ToString()
+		{
+			return $"{Id}. {Name}; {Description}; {Intruder}; {Target}; {IsConfident}; {IsIntegrity}; {IsAvailability}";
+		}
+
 		public override bool Equals(object obj)
 		{
 			var entry = obj as ThreatEntry;

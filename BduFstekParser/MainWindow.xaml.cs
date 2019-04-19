@@ -150,5 +150,10 @@ namespace BduFstekParser
 			var selectedEntry = listViewThreatEntries.SelectedItem as ThreatEntry;
 			textBoxThreatDescription.Text = selectedEntry?.GetFullInfo() ?? "Выберите угрозу для просмотра дополнительной информации о ней в этом окне";
 		}
+
+		private void ButtonUpdateFile_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

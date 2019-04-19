@@ -18,6 +18,6 @@
         <Button Name="buttonNext" Content="Далее" HorizontalAlignment="Left" Margin="405,370,0,0" VerticalAlignment="Top" Width="70" Click="ButtonNext_Click"/>
         <Button Name="buttonPrevious" Content="Назад" HorizontalAlignment="Left" Margin="325,370,0,0" VerticalAlignment="Top" Width="70" Click="ButtonPrevious_Click"/>
         <TextBox Name="textBoxThreatDescription" HorizontalAlignment="Stretch" Height="Auto" Margin="10,450,10,10" TextWrapping="Wrap" VerticalAlignment="Stretch" Width="Auto" IsReadOnly="True" Panel.ZIndex="1"/>
-        <Button Name="buttonUpdateFile" Content="Обновить файл угроз" HorizontalAlignment="Left" Margin="325,410,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Name="buttonUpdateFile" Content="Обновить файл угроз" HorizontalAlignment="Left" Margin="325,410,0,0" VerticalAlignment="Top" Width="150" Click="ButtonUpdateFile_Click"/>
     </Grid>
 </Window>

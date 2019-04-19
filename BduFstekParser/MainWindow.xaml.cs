@@ -168,7 +168,43 @@ namespace BduFstekParser
 
 		private List<Tuple<ThreatEntry, ThreatEntry>> FindDifferences(List<ThreatEntry> before, List<ThreatEntry> after)
 		{
-			return null;
+			Dictionary<int, ThreatEntry> oldData = before.ToDictionary((entry) => entry.Id);
+			Dictionary<int, ThreatEntry> newData = after.ToDictionary((entry) => entry.Id);
+
+			Dictionary<int, ThreatEntry> biggerData;
+			Dictionary<int, ThreatEntry> smallerData;
+
+			if (newData.Count >= oldData.Count)
+			{
+				biggerData = newData;
+				smallerData = oldData;
+			}
+			else
+			{
+				biggerData = oldData;
+				smallerData = newData;
+			}
+
+			List<Tuple<ThreatEntry, ThreatEntry>> differences = new List<Tuple<ThreatEntry, ThreatEntry>>();
+			foreach (var entry in biggerData)
+			{
+				if (!smallerData.ContainsKey(entry.Key))
+				{
+					if (biggerData == newData)
+						differences.Add(new Tuple<ThreatEntry, ThreatEntry>(null, entry.Value));
+					else
+						differences.Add(new Tuple<ThreatEntry, ThreatEntry>(entry.Value, null));
+				}
+				else if (!entry.Value.Equals(smallerData[entry.Key]))
+				{
+					if (biggerData == newData)
+						differences.Add(new Tuple<ThreatEntry, ThreatEntry>(smallerData[entry.Key], entry.Value));
+					else
+						differences.Add(new Tuple<ThreatEntry, ThreatEntry>(entry.Value, smallerData[entry.Key]));
+				}
+			}
+
+			return differences;
 		}
 	}
 }

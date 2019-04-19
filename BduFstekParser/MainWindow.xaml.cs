@@ -73,6 +73,33 @@ namespace BduFstekParser
 			Excel.Workbook excelWorkbook = excel.Workbooks.Open(Directory.GetCurrentDirectory() + "/" + threatFileName, 0, true);
 			Excel.Worksheet excelSheet = excelWorkbook.Sheets[1];
 			Excel.Range excelRange = excelSheet.UsedRange;
+
+			for (int iRow = 3; iRow <= excelRange.Rows.Count; iRow++)
+			{
+				int columnCount = excelRange.Columns.Count - 2;
+
+				string[] rowValues = new string[columnCount];
+				for (int jColumn = 1; jColumn <= columnCount; jColumn++)
+				{
+					rowValues[jColumn - 1] = excelSheet.Cells[iRow, jColumn].Value.ToString();
+				}
+
+				ThreatEntry newEntry = new ThreatEntry
+				(
+					int.Parse(rowValues[0]),
+					rowValues[1],
+					rowValues[2],
+					rowValues[3],
+					rowValues[4],
+					rowValues[5] == "1",
+					rowValues[6] == "1",
+					rowValues[7] == "1"
+				);
+
+				threatEntries.Add(newEntry);
+			}
+
+			excel.Quit();
 		}
 	}
 }

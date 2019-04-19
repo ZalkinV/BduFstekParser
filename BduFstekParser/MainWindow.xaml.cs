@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Net;
 using System.Threading;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Collections.ObjectModel;
 
 namespace BduFstekParser
 {
@@ -24,7 +25,9 @@ namespace BduFstekParser
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		internal List<ThreatEntry> threatEntries { get; set; }
+		internal List<ThreatEntry> threatEntries;
+		internal ObservableCollection<ThreatEntry> threatEntriesVisible;
+
 		private string threatFileName;
 		private string threatFileUrl;
 
@@ -33,7 +36,8 @@ namespace BduFstekParser
 			InitializeComponent();
 
 			threatEntries = new List<ThreatEntry>();
-			listViewThreatEntries.ItemsSource = threatEntries;
+			threatEntriesVisible = new ObservableCollection<ThreatEntry>();
+			listViewThreatEntries.ItemsSource = threatEntriesVisible;
 
 			threatFileName = "thrlist.xlsx";
 			threatFileUrl = "https://bdu.fstec.ru/documents/files/thrlist.xlsx";

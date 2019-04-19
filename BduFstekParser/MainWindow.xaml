@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <ListView Name="listViewThreatEntries" HorizontalAlignment="Left" Height="300" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
+        <ListView Name="listViewThreatEntries" HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding StringFormat=УБИ. {0}, Path=Id}">Идентификатор угрозы</GridViewColumn>
@@ -15,8 +15,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="buttonNext" Content="Далее" HorizontalAlignment="Left" Margin="405,315,0,0" VerticalAlignment="Top" Width="70" Click="ButtonNext_Click"/>
-        <Button Name="buttonPrevious" Content="Назад" HorizontalAlignment="Left" Margin="325,315,0,0" VerticalAlignment="Top" Width="70" Click="ButtonPrevious_Click"/>
+        <Button Name="buttonNext" Content="Далее" HorizontalAlignment="Left" Margin="405,370,0,0" VerticalAlignment="Top" Width="70" Click="ButtonNext_Click"/>
+        <Button Name="buttonPrevious" Content="Назад" HorizontalAlignment="Left" Margin="325,370,0,0" VerticalAlignment="Top" Width="70" Click="ButtonPrevious_Click"/>
 
     </Grid>
 </Window>

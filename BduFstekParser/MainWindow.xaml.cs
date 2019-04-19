@@ -141,8 +141,8 @@ namespace BduFstekParser
 			for (int i = firstEntryIndex; i < lastEntryIndex; i++)
 			{
 				threatEntriesVisible.Add(threatEntries[i]);
-				lastVisibleEntryIndex++;
 			}
+			lastVisibleEntryIndex = lastEntryIndex - 1;
 		}
 	}
 }

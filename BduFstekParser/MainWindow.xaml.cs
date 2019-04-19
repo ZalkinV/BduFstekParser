@@ -166,7 +166,7 @@ namespace BduFstekParser
 			List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
 		}
 
-		private List<Tuple<ThreatEntry, ThreatEntry>> FindDifferences(List<ThreatEntry> before, List<ThreatEntry> after)
+		private List<EntryDiff> FindDifferences(List<ThreatEntry> before, List<ThreatEntry> after)
 		{
 			Dictionary<int, ThreatEntry> oldData = before.ToDictionary((entry) => entry.Id);
 			Dictionary<int, ThreatEntry> newData = after.ToDictionary((entry) => entry.Id);
@@ -185,22 +185,22 @@ namespace BduFstekParser
 				smallerData = newData;
 			}
 
-			List<Tuple<ThreatEntry, ThreatEntry>> differences = new List<Tuple<ThreatEntry, ThreatEntry>>();
+			List<EntryDiff> differences = new List<EntryDiff>();
 			foreach (var entry in biggerData)
 			{
 				if (!smallerData.ContainsKey(entry.Key))
 				{
 					if (biggerData == newData)
-						differences.Add(new Tuple<ThreatEntry, ThreatEntry>(null, entry.Value));
+						differences.Add(new EntryDiff(null, entry.Value));
 					else
-						differences.Add(new Tuple<ThreatEntry, ThreatEntry>(entry.Value, null));
+						differences.Add(new EntryDiff(entry.Value, null));
 				}
 				else if (!entry.Value.Equals(smallerData[entry.Key]))
 				{
 					if (biggerData == newData)
-						differences.Add(new Tuple<ThreatEntry, ThreatEntry>(smallerData[entry.Key], entry.Value));
+						differences.Add(new EntryDiff(smallerData[entry.Key], entry.Value));
 					else
-						differences.Add(new Tuple<ThreatEntry, ThreatEntry>(entry.Value, smallerData[entry.Key]));
+						differences.Add(new EntryDiff(entry.Value, smallerData[entry.Key]));
 				}
 			}
 

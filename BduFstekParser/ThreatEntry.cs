@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BduFstekParser
 {
-	class ThreatEntry
+	public class ThreatEntry
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }

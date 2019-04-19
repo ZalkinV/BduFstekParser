@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
 using System.Threading;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BduFstekParser
 {
@@ -48,6 +49,7 @@ namespace BduFstekParser
 		private void FillThreatsListView()
 		{
 			PrepareFile();
+			GetFileData();
 		}
 
 		private void PrepareFile()
@@ -65,5 +67,12 @@ namespace BduFstekParser
 			}
 		}
 
+		private void GetFileData()
+		{
+			Excel.Application excel = new Excel.Application();
+			Excel.Workbook excelWorkbook = excel.Workbooks.Open(Directory.GetCurrentDirectory() + "/" + threatFileName, 0, true);
+			Excel.Worksheet excelSheet = excelWorkbook.Sheets[1];
+			Excel.Range excelRange = excelSheet.UsedRange;
+		}
 	}
 }

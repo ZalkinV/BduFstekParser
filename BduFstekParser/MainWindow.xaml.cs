@@ -49,9 +49,10 @@ namespace BduFstekParser
 		{
 			FillThreatsListView();
 
-			for (int i = 0; i < visibleThreatCount; i++)
+			int entriesCount = Math.Min(visibleThreatCount, threatEntries.Count);
+			for (int i = 0; i < entriesCount; i++)
 				threatEntriesVisible.Add(threatEntries[i]);
-
+			lastVisibleEntryIndex = entriesCount - 1;
 		}
 
 		private void FillThreatsListView()

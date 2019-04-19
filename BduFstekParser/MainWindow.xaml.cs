@@ -27,6 +27,7 @@ namespace BduFstekParser
 	{
 		internal List<ThreatEntry> threatEntries;
 		internal ObservableCollection<ThreatEntry> threatEntriesVisible;
+		private int visibleThreatCount = 15;
 
 		private string threatFileName;
 		private string threatFileUrl;
@@ -46,6 +47,10 @@ namespace BduFstekParser
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			FillThreatsListView();
+
+			for (int i = 0; i < visibleThreatCount; i++)
+				threatEntriesVisible.Add(threatEntries[i]);
+
 		}
 
 		private void FillThreatsListView()

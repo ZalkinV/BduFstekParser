@@ -31,7 +31,9 @@ namespace BduFstekParser
 		{
 			InitializeComponent();
 
+			threatEntries = new List<ThreatEntry>();
 			listViewThreatEntries.ItemsSource = threatEntries;
+
 			threatFileName = "thrlist.xlsx";
 			threatFileUrl = "https://bdu.fstec.ru/documents/files/thrlist.xlsx";
 		}

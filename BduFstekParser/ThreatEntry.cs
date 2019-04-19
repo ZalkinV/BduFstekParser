@@ -31,7 +31,15 @@ namespace BduFstekParser
 
 		public string GetFullInfo()
 		{
-			return Id.ToString();
+			return
+					$"Описание УБИ. {Id}:\n" +
+					$" - Наименование: {Name}\n" +
+					$" - Описание: {Description}\n" +
+					$" - Источник: {Intruder}\n" +
+					$" - Объект воздействия: {Target}\n" +
+					$" - Нарушение конфиденциальности: {(IsConfident ? "есть" : "отсутствует")}\n" +
+					$" - Нарушение целостности: {(IsIntegrity ? "есть" : "отсутствует")}\n" +
+					$" - Нарушение доступности: {(IsAvailability ? "есть" : "отсутствует")}";
 		}
 	}
 }

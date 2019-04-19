@@ -58,7 +58,7 @@ namespace BduFstekParser
 		private void FillThreatsListView()
 		{
 			PrepareFile();
-			GetFileData();
+			threatEntries = GetFileData(threatFileName);
 		}
 
 		private void PrepareFile()
@@ -76,13 +76,14 @@ namespace BduFstekParser
 			}
 		}
 
-		private void GetFileData()
+		private List<ThreatEntry> GetFileData(string fileName)
 		{
 			Excel.Application excel = new Excel.Application();
-			Excel.Workbook excelWorkbook = excel.Workbooks.Open(Directory.GetCurrentDirectory() + "/" + threatFileName, 0, true);
+			Excel.Workbook excelWorkbook = excel.Workbooks.Open(Directory.GetCurrentDirectory() + "/" + fileName, 0, true);
 			Excel.Worksheet excelSheet = excelWorkbook.Sheets[1];
 			Excel.Range excelRange = excelSheet.UsedRange;
 
+			List<ThreatEntry> fileData = new List<ThreatEntry>(excelRange.Rows.Count);
 			for (int iRow = 3; iRow <= excelRange.Rows.Count; iRow++)
 			{
 				int columnCount = excelRange.Columns.Count - 2;
@@ -105,10 +106,12 @@ namespace BduFstekParser
 					rowValues[7] == "1"
 				);
 
-				threatEntries.Add(newEntry);
+				fileData.Add(newEntry);
 			}
 
 			excel.Quit();
+
+			return fileData;
 		}
 
 		private void ButtonPrevious_Click(object sender, RoutedEventArgs e)

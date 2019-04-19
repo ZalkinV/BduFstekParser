@@ -41,5 +41,19 @@ namespace BduFstekParser
 					$" - Нарушение целостности: {(IsIntegrity ? "есть" : "отсутствует")}\n" +
 					$" - Нарушение доступности: {(IsAvailability ? "есть" : "отсутствует")}";
 		}
+
+		public override bool Equals(object obj)
+		{
+			var entry = obj as ThreatEntry;
+			return entry != null &&
+				   Id == entry.Id &&
+				   Name == entry.Name &&
+				   Description == entry.Description &&
+				   Intruder == entry.Intruder &&
+				   Target == entry.Target &&
+				   IsConfident == entry.IsConfident &&
+				   IsIntegrity == entry.IsIntegrity &&
+				   IsAvailability == entry.IsAvailability;
+		}
 	}
 }

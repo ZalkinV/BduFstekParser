@@ -28,5 +28,10 @@ namespace BduFstekParser
 			IsIntegrity = isIntegrity;
 			IsAvailability = isAvailability;
 		}
+
+		public string GetFullInfo()
+		{
+			return Id.ToString();
+		}
 	}
 }

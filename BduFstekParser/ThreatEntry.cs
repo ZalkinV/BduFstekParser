@@ -17,6 +17,8 @@ namespace BduFstekParser
 		public bool IsIntegrity { get; set; }
 		public bool IsAvailability { get; set; }
 
+		public ThreatEntry() { }
+
 		public ThreatEntry(int id, string name, string description, string intruder, string target, bool isConfident, bool isIntegrity, bool isAvailability)
 		{
 			Id = id;

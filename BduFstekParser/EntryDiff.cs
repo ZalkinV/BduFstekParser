@@ -11,6 +11,8 @@ namespace BduFstekParser
 		public ThreatEntry Before { get; set; }
 		public ThreatEntry After { get; set; }
 
+		public EntryDiff() { }
+
 		public EntryDiff(ThreatEntry before, ThreatEntry after)
 		{
 			Before = before;

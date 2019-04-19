@@ -28,6 +28,7 @@ namespace BduFstekParser
 		internal List<ThreatEntry> threatEntries;
 		internal ObservableCollection<ThreatEntry> threatEntriesVisible;
 		private int visibleThreatCount = 15;
+		private int lastVisibleEntryIndex = 0;
 
 		private string threatFileName;
 		private string threatFileUrl;
@@ -116,7 +117,19 @@ namespace BduFstekParser
 
 		private void ButtonNext_Click(object sender, RoutedEventArgs e)
 		{
+			if (lastVisibleEntryIndex >= threatEntries.Count - 1)
+				return;
 
+			threatEntriesVisible.Clear();
+
+			int remainsEntries = threatEntries.Count - 1 - lastVisibleEntryIndex;
+			int firstEntryIndex = lastVisibleEntryIndex + 1;
+			int lastEntryIndex = firstEntryIndex + Math.Min(remainsEntries, visibleThreatCount);
+			for (int i = firstEntryIndex; i < lastEntryIndex; i++)
+			{
+				threatEntriesVisible.Add(threatEntries[i]);
+				lastVisibleEntryIndex++;
+			}
 		}
 	}
 }

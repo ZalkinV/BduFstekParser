@@ -147,7 +147,8 @@ namespace BduFstekParser
 
 		private void ListViewThreatEntries_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			
+			var selectedEntry = listViewThreatEntries.SelectedItem as ThreatEntry;
+			textBoxThreatDescription.Text = selectedEntry?.GetFullInfo() ?? "Выберите угрозу для просмотра дополнительной информации о ней в этом окне";
 		}
 	}
 }

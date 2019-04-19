@@ -156,7 +156,12 @@ namespace BduFstekParser
 
 		private void ButtonUpdateFile_Click(object sender, RoutedEventArgs e)
 		{
-
+			string tmpFileName = ".Tmp" + threatFileName;
+			using (WebClient webClient = new WebClient())
+			{
+				webClient.DownloadFile(new Uri(threatFileUrl), tmpFileName);
+			}
+			List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
 		}
 	}
 }

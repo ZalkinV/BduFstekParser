@@ -19,7 +19,7 @@ namespace BduFstekParser
 	/// </summary>
 	public partial class DiffWindow : Window
 	{
-		public DiffWindow()
+		public DiffWindow(List<EntryDiff> differences)
 		{
 			InitializeComponent();
 		}

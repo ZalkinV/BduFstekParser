@@ -55,8 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DiffWindow.xaml.cs">
+      <DependentUpon>DiffWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntryDiff.cs" />
     <Compile Include="ThreatEntry.cs" />
+    <Page Include="DiffWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

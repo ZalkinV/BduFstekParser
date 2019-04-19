@@ -25,6 +25,8 @@ namespace BduFstekParser
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private DiffWindow diffWindow;
+
 		internal List<ThreatEntry> threatEntries;
 		internal ObservableCollection<ThreatEntry> threatEntriesVisible;
 		private int visibleThreatCount = 15;
@@ -164,6 +166,10 @@ namespace BduFstekParser
 			}
 
 			List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
+
+			List<EntryDiff> differences = FindDifferences(threatEntries, fetchedEntries);
+			diffWindow = new DiffWindow(differences);
+			diffWindow.Show();
 		}
 
 		private List<EntryDiff> FindDifferences(List<ThreatEntry> before, List<ThreatEntry> after)

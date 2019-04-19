@@ -113,7 +113,19 @@ namespace BduFstekParser
 
 		private void ButtonPrevious_Click(object sender, RoutedEventArgs e)
 		{
+			if (lastVisibleEntryIndex < visibleThreatCount)
+				return;
 
+			int firstEntryIndex = Math.Max(0, lastVisibleEntryIndex + 1 - (threatEntriesVisible.Count + visibleThreatCount));
+			int lastEntryIndex = firstEntryIndex + visibleThreatCount;
+
+			threatEntriesVisible.Clear();
+
+			for (int i = firstEntryIndex; i < lastEntryIndex; i++)
+			{
+				threatEntriesVisible.Add(threatEntries[i]);
+			}
+			lastVisibleEntryIndex = lastEntryIndex - 1;
 		}
 
 		private void ButtonNext_Click(object sender, RoutedEventArgs e)

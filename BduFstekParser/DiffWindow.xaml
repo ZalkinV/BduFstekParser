@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="DiffWindow" Height="450" Width="800">
     <Grid>
-        
+        <ListView Name="listViewDiff" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10,10,10" VerticalAlignment="Stretch" Width="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn>Было</GridViewColumn>
+                    <GridViewColumn>Стало</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

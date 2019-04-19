@@ -144,5 +144,10 @@ namespace BduFstekParser
 			}
 			lastVisibleEntryIndex = lastEntryIndex - 1;
 		}
+
+		private void ListViewThreatEntries_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			
+		}
 	}
 }

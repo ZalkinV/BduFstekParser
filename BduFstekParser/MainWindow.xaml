@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <ListView Name="listViewThreatEntries" HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="ListViewThreatEntries_SelectionChanged">
+        <ListView Name="listViewThreatEntries" HorizontalAlignment="Stretch" Height="350" Margin="10,10,10,10" VerticalAlignment="Top" Width="Auto" SelectionChanged="ListViewThreatEntries_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding StringFormat=УБИ. {0}, Path=Id}">Идентификатор угрозы</GridViewColumn>

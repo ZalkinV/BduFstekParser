@@ -72,6 +72,11 @@ namespace BduFstekParser
 			}
 		}
 
+		private List<ThreatEntry> DeserializeThreatEntries(string fileName)
+		{
+			return null;
+		}
+
 		private void FillThreatsListView()
 		{
 			PrepareFile();

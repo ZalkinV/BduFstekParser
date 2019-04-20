@@ -61,14 +61,11 @@ namespace BduFstekParser
 
 		private void SerializeThreatEntries(List<ThreatEntry> entries, string fileName)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(ThreatEntry));
+			XmlSerializer serializer = new XmlSerializer(typeof(ThreatEntry[]));
 
 			using (FileStream fs = new FileStream(fileName, FileMode.Create))
 			{
-				foreach (ThreatEntry entry in entries)
-				{
-					serializer.Serialize(fs, entry);
-				}
+				serializer.Serialize(fs, entries.ToArray());
 			}
 		}
 

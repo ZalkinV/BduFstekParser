@@ -193,17 +193,32 @@ namespace BduFstekParser
 		private void ButtonUpdateFile_Click(object sender, RoutedEventArgs e)
 		{
 			string tmpFileName = ".Tmp" + threatFileName;
+			string messageBoxCaption = "Результаты обновления базы угроз";
 
-			using (WebClient webClient = new WebClient())
+			try
 			{
-				webClient.DownloadFile(new Uri(threatFileUrl), tmpFileName);
+				using (WebClient webClient = new WebClient())
+				{
+					webClient.DownloadFile(new Uri(threatFileUrl), tmpFileName);
+				}
+
+				List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
+
+				List<EntryDiff> differences = FindDifferences(threatEntries, fetchedEntries);
+
+				MessageBox.Show($"Было обновлено {differences.Count} записей в базе угроз.", messageBoxCaption);
+				
+				if (differences.Count != 0)
+				{
+					diffWindow = new DiffWindow(differences);
+					diffWindow.Show();
+				}
 			}
-
-			List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
-
-			List<EntryDiff> differences = FindDifferences(threatEntries, fetchedEntries);
-			diffWindow = new DiffWindow(differences);
-			diffWindow.Show();
+			catch (Exception exception)
+			{
+				MessageBox.Show($"База угроз не может быть обновлена по следующей причине: {exception.Message}", messageBoxCaption);
+			}
+			
 		}
 
 		private List<EntryDiff> FindDifferences(List<ThreatEntry> before, List<ThreatEntry> after)

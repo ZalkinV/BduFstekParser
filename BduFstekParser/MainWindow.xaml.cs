@@ -203,7 +203,6 @@ namespace BduFstekParser
 				}
 
 				List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
-
 				List<EntryDiff> differences = FindDifferences(threatEntries, fetchedEntries);
 
 				MessageBox.Show($"Было обновлено {differences.Count} записей в базе угроз.", messageBoxCaption);
@@ -218,7 +217,8 @@ namespace BduFstekParser
 			{
 				MessageBox.Show($"База угроз не может быть обновлена по следующей причине: {exception.Message}", messageBoxCaption);
 			}
-			
+
+			File.Delete(Directory.GetCurrentDirectory() + "/" + tmpFileName);
 		}
 
 		private List<EntryDiff> FindDifferences(List<ThreatEntry> before, List<ThreatEntry> after)

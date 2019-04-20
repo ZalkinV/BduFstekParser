@@ -50,11 +50,17 @@ namespace BduFstekParser
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			FillThreatsListView();
+			SerializeThreatEntries(threatEntries, "ThreatEntriesData.xml");
 
 			int entriesCount = Math.Min(visibleThreatCount, threatEntries.Count);
 			for (int i = 0; i < entriesCount; i++)
 				threatEntriesVisible.Add(threatEntries[i]);
 			lastVisibleEntryIndex = entriesCount - 1;
+		}
+
+		private void SerializeThreatEntries(List<ThreatEntry> entries, string fileName)
+		{
+
 		}
 
 		private void FillThreatsListView()

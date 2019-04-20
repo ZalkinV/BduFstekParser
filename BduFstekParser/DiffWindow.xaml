@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BduFstekParser"
         mc:Ignorable="d"
-        Title="DiffWindow" Height="450" Width="800">
+        Title="Различия между БДУ" Height="450" Width="800">
     <Grid>
         <ListView Name="listViewDiff" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10,10,10" VerticalAlignment="Stretch" Width="Auto">
             <ListView.View>

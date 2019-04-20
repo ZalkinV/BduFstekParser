@@ -71,7 +71,15 @@ namespace BduFstekParser
 
 		private List<ThreatEntry> DeserializeThreatEntries(string fileName)
 		{
-			return null;
+			XmlSerializer serializer = new XmlSerializer(typeof(ThreatEntry[]));
+
+			List<ThreatEntry> entries;
+			using (FileStream fs = new FileStream(fileName, FileMode.Open))
+			{
+				entries = (serializer.Deserialize(fs) as ThreatEntry[])?.ToList();
+			}
+
+			return entries;
 		}
 
 		private void FillThreatsListView()

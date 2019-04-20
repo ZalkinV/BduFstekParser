@@ -204,6 +204,7 @@ namespace BduFstekParser
 
 				List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
 				List<EntryDiff> differences = FindDifferences(threatEntries, fetchedEntries);
+				UpdateSerializedFile(differences, threatSerializedFileName);
 
 				MessageBox.Show($"Было обновлено {differences.Count} записей в базе угроз.", messageBoxCaption);
 
@@ -223,7 +224,13 @@ namespace BduFstekParser
 
 		private void UpdateSerializedFile(List<EntryDiff> differences, string fileName)
 		{
+			//Индекс записи берётся из ID, что не всегда верно
+			foreach (EntryDiff entryDiff in differences)
+			{
+				threatEntries[entryDiff.Before.Id - 1] = entryDiff.After;
+			}
 
+			SerializeThreatEntries(threatEntries, fileName);
 		}
 
 		private List<EntryDiff> FindDifferences(List<ThreatEntry> before, List<ThreatEntry> after)

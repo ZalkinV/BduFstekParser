@@ -212,6 +212,7 @@ namespace BduFstekParser
 
 				MessageBox.Show($"Было обновлено {differences.Count} записей в базе угроз.", messageBoxCaption);
 
+				string filePath = Directory.GetCurrentDirectory() + "/";
 				if (differences.Count != 0)
 				{
 					UpdateSerializedFile(differences, threatSerializedFileName);
@@ -219,6 +220,13 @@ namespace BduFstekParser
 
 					diffWindow = new DiffWindow(differences);
 					diffWindow.Show();
+
+					File.Delete(filePath + threatFileName);
+					File.Move(filePath + tmpFileName, filePath + threatFileName);
+				}
+				else
+				{
+					File.Delete(filePath + tmpFileName);
 				}
 			}
 			catch (Exception exception)

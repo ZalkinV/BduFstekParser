@@ -53,7 +53,6 @@ namespace BduFstekParser
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			FillThreatsListView();
-			SerializeThreatEntries(threatEntries, threatSerializedFileName);
 
 			int entriesCount = Math.Min(visibleThreatCount, threatEntries.Count);
 			for (int i = 0; i < entriesCount; i++)
@@ -86,8 +85,16 @@ namespace BduFstekParser
 
 		private void FillThreatsListView()
 		{
-			PrepareFile();
-			threatEntries = GetFileData(threatFileName);
+			if (File.Exists(threatSerializedFileName))
+			{
+				threatEntries = DeserializeThreatEntries(threatSerializedFileName);
+			}
+			else
+			{
+				PrepareFile();
+				threatEntries = GetFileData(threatFileName);
+				SerializeThreatEntries(threatEntries, threatSerializedFileName);
+			}
 		}
 
 		private void PrepareFile()

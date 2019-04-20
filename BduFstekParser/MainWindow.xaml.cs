@@ -138,10 +138,10 @@ namespace BduFstekParser
 				ThreatEntry newEntry = new ThreatEntry
 				(
 					int.Parse(rowValues[0]),
-					rowValues[1],
-					rowValues[2],
-					rowValues[3],
-					rowValues[4],
+					rowValues[1].Replace("\r\n", "\n"),
+					rowValues[2].Replace("\r\n", "\n"),
+					rowValues[3].Replace("\r\n", "\n"),
+					rowValues[4].Replace("\r\n", "\n"),
 					rowValues[5] == "1",
 					rowValues[6] == "1",
 					rowValues[7] == "1"

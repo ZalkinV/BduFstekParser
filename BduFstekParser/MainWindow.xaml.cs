@@ -209,13 +209,14 @@ namespace BduFstekParser
 
 				List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
 				List<EntryDiff> differences = FindDifferences(threatEntries, fetchedEntries);
-				UpdateSerializedFile(differences, threatSerializedFileName);
-				InitializeListView();
 
 				MessageBox.Show($"Было обновлено {differences.Count} записей в базе угроз.", messageBoxCaption);
 
 				if (differences.Count != 0)
 				{
+					UpdateSerializedFile(differences, threatSerializedFileName);
+					InitializeListView();
+
 					diffWindow = new DiffWindow(differences);
 					diffWindow.Show();
 				}

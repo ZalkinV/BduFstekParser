@@ -54,6 +54,11 @@ namespace BduFstekParser
 		{
 			FillThreatsListView();
 
+			InitializeListView();
+		}
+
+		private void InitializeListView()
+		{
 			int entriesCount = Math.Min(visibleThreatCount, threatEntries.Count);
 			for (int i = 0; i < entriesCount; i++)
 				threatEntriesVisible.Add(threatEntries[i]);
@@ -205,6 +210,7 @@ namespace BduFstekParser
 				List<ThreatEntry> fetchedEntries = GetFileData(tmpFileName);
 				List<EntryDiff> differences = FindDifferences(threatEntries, fetchedEntries);
 				UpdateSerializedFile(differences, threatSerializedFileName);
+				InitializeListView();
 
 				MessageBox.Show($"Было обновлено {differences.Count} записей в базе угроз.", messageBoxCaption);
 

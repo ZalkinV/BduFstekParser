@@ -17,6 +17,7 @@ using System.Net;
 using System.Threading;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.ObjectModel;
+using System.Xml.Serialization;
 
 namespace BduFstekParser
 {
@@ -60,7 +61,15 @@ namespace BduFstekParser
 
 		private void SerializeThreatEntries(List<ThreatEntry> entries, string fileName)
 		{
+			XmlSerializer serializer = new XmlSerializer(typeof(ThreatEntry));
 
+			using (FileStream fs = new FileStream(fileName, FileMode.Create))
+			{
+				foreach (ThreatEntry entry in entries)
+				{
+					serializer.Serialize(fs, entry);
+				}
+			}
 		}
 
 		private void FillThreatsListView()

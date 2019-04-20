@@ -206,7 +206,7 @@ namespace BduFstekParser
 				List<EntryDiff> differences = FindDifferences(threatEntries, fetchedEntries);
 
 				MessageBox.Show($"Было обновлено {differences.Count} записей в базе угроз.", messageBoxCaption);
-				
+
 				if (differences.Count != 0)
 				{
 					diffWindow = new DiffWindow(differences);
@@ -219,6 +219,11 @@ namespace BduFstekParser
 			}
 
 			File.Delete(Directory.GetCurrentDirectory() + "/" + tmpFileName);
+		}
+
+		private void UpdateSerializedFile(List<EntryDiff> differences, string fileName)
+		{
+
 		}
 
 		private List<EntryDiff> FindDifferences(List<ThreatEntry> before, List<ThreatEntry> after)

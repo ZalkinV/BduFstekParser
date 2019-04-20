@@ -33,6 +33,7 @@ namespace BduFstekParser
 		private int visibleThreatCount = 15;
 		private int lastVisibleEntryIndex = 0;
 
+		private string threatSerializedFileName;
 		private string threatFileName;
 		private string threatFileUrl;
 
@@ -44,6 +45,7 @@ namespace BduFstekParser
 			threatEntriesVisible = new ObservableCollection<ThreatEntry>();
 			listViewThreatEntries.ItemsSource = threatEntriesVisible;
 
+			threatSerializedFileName = "ThreatEntriesData.xml";
 			threatFileName = "thrlist.xlsx";
 			threatFileUrl = "https://bdu.fstec.ru/documents/files/thrlist.xlsx";
 		}
@@ -51,7 +53,7 @@ namespace BduFstekParser
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			FillThreatsListView();
-			SerializeThreatEntries(threatEntries, "ThreatEntriesData.xml");
+			SerializeThreatEntries(threatEntries, threatSerializedFileName);
 
 			int entriesCount = Math.Min(visibleThreatCount, threatEntries.Count);
 			for (int i = 0; i < entriesCount; i++)
